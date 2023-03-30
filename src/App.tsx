@@ -1,5 +1,5 @@
 import ListGroup from "./components/ListGroup";
-import "bootstrap/dist/css/bootstrap.css";
+// import "bootstrap/dist/css/bootstrap.css";
 
 const App = () => {
   return (
