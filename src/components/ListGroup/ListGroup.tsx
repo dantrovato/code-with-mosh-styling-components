@@ -1,14 +1,39 @@
-import styles from "./ListGroup.module.css";
+import styles from "./ListGroup.css";
+import styled from "styled-components";
+import { useState } from "react";
 
-const ListGroup = () => {
+interface Props {
+  countries: string[];
+}
+
+const List = styled.ul`
+  list-style: none;
+  color: green;
+`;
+
+interface ListItemProps {
+  active: boolean;
+}
+
+const LiItem = styled.li<ListItemProps>`
+  font-size: 1.5rem;
+  background: ${(props) => (props.active ? "pink" : "none")};
+`;
+
+const ListGroup = ({ countries }: Props) => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
   return (
-    <ul className={[styles.ListGroup, styles.big].join(" ")}>
-      <li className="list-group-item">An item</li>
-      <li className="list-group-item">A second item</li>
-      <li className="list-group-item">A third item</li>
-      <li className="list-group-item">A fourth item</li>
-      <li className="list-group-item">And a fifth one</li>
-    </ul>
+    <List>
+      {countries.map((country, index) => (
+        <LiItem
+          key={index}
+          onClick={() => setSelectedIndex(index)}
+          active={selectedIndex === index}
+        >
+          {country}
+        </LiItem>
+      ))}
+    </List>
   );
 };
 
