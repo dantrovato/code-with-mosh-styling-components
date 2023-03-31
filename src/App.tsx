@@ -1,10 +1,10 @@
 import ListGroup from "./components/ListGroup";
-// import "bootstrap/dist/css/bootstrap.css";
-const countries = ["Japan", "Brazil", "Costa Rica"];
+import Button from "./components/Button";
+
 const App = () => {
   return (
     <div>
-      <ListGroup countries={countries} />
+      <Button onClick={() => {}}>My Button u</Button>
     </div>
   );
 };
