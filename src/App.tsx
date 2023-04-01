@@ -8,8 +8,15 @@ const App = () => {
     },
   });
 
-  const handleClick = () => {};
-  return <div> </div>;
+  const handleClick = () => {
+    setGame({ ...game, player: { ...game.player, name: "Dave" } });
+  };
+  return (
+    <div>
+      <p>{game.player.name}</p>
+      <button onClick={handleClick}>Click</button>
+    </div>
+  );
 };
 
 export default App;
