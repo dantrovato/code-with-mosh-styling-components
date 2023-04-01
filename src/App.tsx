@@ -2,31 +2,30 @@ import { useState } from "react";
 import { produce } from "immer";
 
 const App = () => {
-  const [pizza, setPizza] = useState({
-    name: "Spicy Pepperoni",
-    toppings: ["Mushroom"],
+  const [cart, setCart] = useState({
+    discount: 1,
+    items: [
+      { id: 1, title: "Product 1", quantity: 1 },
+      { id: 2, title: "Product 2", quantity: 1 },
+    ],
   });
 
-  // // without immer
-  // const handleClick = () => {
-  //   const newPizza = { ...pizza, toppings: [...pizza.toppings] };
-  //   newPizza.toppings.push("banana");
-  //   setPizza(newPizza);
-  // };
-
-  // with immer
   const handleClick = () => {
-    setPizza(
-      produce((drafts) => {
-        drafts.toppings.push("Melon");
-      })
-    );
+    setCart({
+      ...cart,
+      items: cart.items.map((item) => {
+        return item.id === 1 ? { ...item, quantity: 2 } : item;
+      }),
+    });
   };
+
   return (
     <div>
       <ul>
-        {pizza.toppings.map((topping) => (
-          <li>{topping}</li>
+        {cart.items.map((item) => (
+          <li>
+            {item.title} {item.quantity}
+          </li>
         ))}
       </ul>
       <button onClick={handleClick}>Click</button>
