@@ -1,34 +1,12 @@
-import { useState } from "react";
-import { produce } from "immer";
+import ExpandableText from "./components/ExpandableText";
+
+const text =
+  "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem necessitatibus eligendi itaque libero, laboriosam officiis sunt ex, nam facilis deserunt a temporibus, ea consectetur quis odit mollitia eius enim! Iusto, dolores. Veniam rem ipsam libero sint eos velit porro, nam voluptatem cupiditate, aliquam dolore molestiae id. Culpa, saepe tempore. Maiores ex corporis, cumque, assumenda pariatur veniam voluptas sint dolore fugit minus laboriosam quaerat, tempore at accusantium consequatur aut aperiam rem omnis laudantium natus repellendus eius? Natus ad quo perspiciatis aperiam non repudiandae deleniti veniam sed pariatur. Neque tenetur voluptates fuga quibusdam repellat, hic ipsa assumenda vitae aperiam non dignissimos et?";
 
 const App = () => {
-  const [cart, setCart] = useState({
-    discount: 1,
-    items: [
-      { id: 1, title: "Product 1", quantity: 1 },
-      { id: 2, title: "Product 2", quantity: 1 },
-    ],
-  });
-
-  const handleClick = () => {
-    setCart({
-      ...cart,
-      items: cart.items.map((item) => {
-        return item.id === 1 ? { ...item, quantity: 2 } : item;
-      }),
-    });
-  };
-
   return (
     <div>
-      <ul>
-        {cart.items.map((item) => (
-          <li>
-            {item.title} {item.quantity}
-          </li>
-        ))}
-      </ul>
-      <button onClick={handleClick}>Click</button>
+      <ExpandableText maxChars={10}>{text}</ExpandableText>
     </div>
   );
 };
